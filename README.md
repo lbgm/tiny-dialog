@@ -1,2 +1,2 @@
 # ncom
-Tiny Javascript dialog box made with Jquery,
+Tiny Javascript dialog box made with Jquery
