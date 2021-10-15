@@ -1,0 +1,21 @@
+{
+  "extends": "./node_modules/gts/tsconfig-google.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "build",
+    "lib": [
+     "es5",
+     "es6",
+     "dom" 
+    ],
+    "target": "es2015",
+    "module": "commonjs",
+  },
+  "include": [
+    "src/**/*.ts",
+    "test/**/*.ts"
+  ],
+  "moduleResolution": "node",
+  "experimentalDecorators": true,
+  "emitDecoratorMetadata": true
+}
