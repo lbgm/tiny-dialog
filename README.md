@@ -9,11 +9,12 @@ Fully compatible with FontAwesome Icons.
 
 ## Using Example
 ```
+//parameters are optional.
 <script type="text/javascript">
-var myDialog = new ncom({
+    var test = new ncom({
        closeIcon:true,
        ctrlOpen:false,
-       timer:"ok|3600000",
+       timer:"ok|30000",
        icon:"far fa-grin-beam",
        title:"Dialog Title",
        content:'Put html content inside',
@@ -21,13 +22,13 @@ var myDialog = new ncom({
         ok:{
             class:"as-button btn-accept",
             text:'<i class="fa fa-check-circle"></i>&nbsp;Confirm',
-            action:function(){alert("clicked")}
+            action:function($ok){alert("clicked")}
         },
         cancel:{
             hide:false,
             class:"as-effect-button btn-cancel",
             text:'<i class="fa fa-times"></i>&nbsp;Refuse',
-            action:function(){alert("refused")}
+            action:function($cancel){alert("refused")}
         }
        },
     onContentReady: function() {console.log(1)},
@@ -36,13 +37,13 @@ var myDialog = new ncom({
     onAction: function() {console.log(4)},
     onClose: function() {console.log(5)},
     onDestroy: function() {console.log(6)},
-});
+ });
 </script>
 ```
 
 ## Few Details
 
-`timer:"ok|3600000"` : this parameter takes one ncom button id and a  time in milliseconds to automatically click on target'button.
+`timer:"ok|30000"` : this parameter takes one ncom button id and a  time in milliseconds to automatically click on target'button.
 
 ## StyleSheet
 You can modify elements styles as you needed
