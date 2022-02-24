@@ -1,5 +1,5 @@
 # ncom
-Tiny Javascript dialog box made with Jquery
+Tiny Javascript dialog box made with TypeScript
 (https://docs.noud-incorporate.com/ncom/)
 
 ## Description
