@@ -14,6 +14,15 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
 var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
     if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
@@ -25,7 +34,7 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
-var _ncom_instances, _ncom_cross, _ncom_closer, _ncom_icon, _ncom_wrp, _ncom_bw, _ncom_head, _ncom_title, _ncom_content, _ncom_buttons, _ncom_state, _ncom_$cd, _ncom_id, _ncom_detached, _ncom_timerInterval, _ncom_createButtons, _ncom_closerIcon, _ncom_lazyOpen, _ncom_startTimer, _ncom_rgnrt, _ncom_putContent, _ncom_stopTimer, _ncom_createSVG;
+var _ncom_instances, _ncom_cross, _ncom_closer, _ncom_icon, _ncom_wrp, _ncom_bw, _ncom_head, _ncom_title, _ncom_content, _ncom_buttons, _ncom_state, _ncom_$cd, _ncom_id, _ncom_detached, _ncom_timerInterval, _ncom_query, _ncom_el, _ncom_createButtons, _ncom_closerIcon, _ncom_lazyOpen, _ncom_startTimer, _ncom_rgnrt, _ncom_putContent, _ncom_stopTimer, _ncom_createSVG, _ncom_mergeCSS;
 const resizeDecorator = (target, propertyKey, descriptor) => {
     const original = Object(descriptor).value;
     Object(descriptor).value = function (...args) {
@@ -55,30 +64,33 @@ class ncom {
         _ncom_id.set(this, void 0);
         _ncom_detached.set(this, void 0);
         _ncom_timerInterval.set(this, void 0);
+        (() => __awaiter(this, void 0, void 0, function* () {
+            yield __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_mergeCSS).call(this);
+        }))();
         if (typeof this.arg !== 'object')
             return this;
         this.arg.title = this.arg.title || '';
         this.arg.content = this.arg.content || '';
         this.arg = arg;
         __classPrivateFieldSet(this, _ncom_cross, __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_createSVG).call(this, ['16', '16', '0 0 16 16', 'button', 'ncomcross'], [
-            'M11.033,13.625l4.549-4.549a1.43,1.43,0,0,0,0-2.022L14.57,6.044a1.43,1.43,0,0,0-2.022,0L8,10.592,3.451,6.044a1.43,1.43,0,0,0-2.022,0L.419,7.055a1.43,1.43,0,0,0,0,2.022l4.549,4.549L.419,18.174a1.43,1.43,0,0,0,0,2.022L1.43,21.206a1.43,1.43,0,0,0,2.022,0L8,16.658l4.549,4.549a1.43,1.43,0,0,0,2.022,0L15.581,20.2a1.43,1.43,0,0,0,0-2.022Z',
-            'translate(0 -5.625)',
+            'M21.181,19.289,26.9,13.573A1.339,1.339,0,1,0,25,11.678l-5.715,5.716-5.715-5.716a1.339,1.339,0,1,0-1.894,1.894l5.715,5.716L11.679,25A1.339,1.339,0,0,0,13.573,26.9l5.715-5.716L25,26.9A1.339,1.339,0,0,0,26.9,25Z',
+            'translate(-11.285 -11.289)',
             'ncomcrosspath',
         ]), "f");
-        __classPrivateFieldSet(this, _ncom_closer, jQuery('<div/>', { class: 'ncomcloser', html: __classPrivateFieldGet(this, _ncom_cross, "f") }), "f");
-        __classPrivateFieldSet(this, _ncom_icon, jQuery('<div/>', {
+        __classPrivateFieldSet(this, _ncom_closer, __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_query).call(this, 'div', { class: 'ncomcloser', html: __classPrivateFieldGet(this, _ncom_cross, "f") }), "f");
+        __classPrivateFieldSet(this, _ncom_icon, __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_query).call(this, 'div', {
             class: 'nicon',
-            html: jQuery('<i/>', { class: this.arg.icon || '' }),
+            html: __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_query).call(this, 'i', { class: this.arg.icon || '' }),
         }), "f");
-        __classPrivateFieldSet(this, _ncom_wrp, jQuery('<div/>', { class: 'ncomwrp' }), "f");
-        __classPrivateFieldSet(this, _ncom_bw, jQuery('<div/>', { class: 'ncombw' }), "f");
-        __classPrivateFieldSet(this, _ncom_head, jQuery('<div/>', { class: 'ncomhead' }), "f");
-        __classPrivateFieldSet(this, _ncom_title, jQuery('<div/>', { class: 'ncomtitle', html: this.arg.title }), "f");
-        __classPrivateFieldSet(this, _ncom_content, jQuery('<div/>', {
+        __classPrivateFieldSet(this, _ncom_wrp, __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_query).call(this, 'div', { class: 'ncomwrp' }), "f");
+        __classPrivateFieldSet(this, _ncom_bw, __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_query).call(this, 'div', { class: 'ncombw' }), "f");
+        __classPrivateFieldSet(this, _ncom_head, __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_query).call(this, 'div', { class: 'ncomhead' }), "f");
+        __classPrivateFieldSet(this, _ncom_title, __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_query).call(this, 'div', { class: 'ncomtitle', html: this.arg.title }), "f");
+        __classPrivateFieldSet(this, _ncom_content, __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_query).call(this, 'div', {
             class: 'ncomcontent',
             html: this.arg.content,
         }), "f");
-        __classPrivateFieldSet(this, _ncom_buttons, jQuery('<div/>', { class: 'ncombtns' }), "f");
+        __classPrivateFieldSet(this, _ncom_buttons, __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_query).call(this, 'div', { class: 'ncombtns' }), "f");
         __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_putContent).call(this);
         if (typeof this.arg.onOpenBefore === 'function')
             this.arg.onOpenBefore.apply(this);
@@ -111,9 +123,9 @@ class ncom {
         if (typeof res !== 'undefined' && !res)
             return !0;
         __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_stopTimer).call(this);
-        __classPrivateFieldSet(this, _ncom_detached, __classPrivateFieldGet(this, _ncom_wrp, "f").detach(), "f");
+        __classPrivateFieldSet(this, _ncom_detached, __classPrivateFieldGet(this, _ncom_wrp, "f").remove(), "f");
         __classPrivateFieldSet(this, _ncom_state, 300, "f");
-        jQuery('body').removeAttr('data-ncom-is-under');
+        __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_el).call(this, 'body').removeAttribute('data-ncom-is-under');
         return !0;
     }
     open() {
@@ -122,16 +134,16 @@ class ncom {
             return void 0;
         }
         else if (__classPrivateFieldGet(this, _ncom_state, "f") === 300)
-            __classPrivateFieldGet(this, _ncom_detached, "f").appendTo('body');
+            __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_el).call(this, 'body').appendChild(__classPrivateFieldGet(this, _ncom_detached, "f"));
         else
-            __classPrivateFieldGet(this, _ncom_wrp, "f").appendTo('body');
+            __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_el).call(this, 'body').appendChild(__classPrivateFieldGet(this, _ncom_wrp, "f"));
         __classPrivateFieldSet(this, _ncom_state, 200, "f");
         //trigger onOpen argument and #startTimer if is defined
         if (typeof this.arg.onOpen === 'function')
             this.arg.onOpen.apply(this);
         if (typeof this.arg.timer !== 'undefined')
             __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_startTimer).apply(this);
-        jQuery('body').attr('data-ncom-is-under', 'RDSTATE');
+        __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_el).call(this, 'body').setAttribute('data-ncom-is-under', 'RDSTATE');
         return !0;
     }
     isOpen() {
@@ -147,22 +159,38 @@ class ncom {
         }
     }
     domResized() {
-        __classPrivateFieldGet(this, _ncom_wrp, "f")[0].style.height = `${Object(window).innerHeight}px`;
+        __classPrivateFieldGet(this, _ncom_wrp, "f").style.height = `${Object(window).innerHeight}px`;
     }
 }
-_ncom_cross = new WeakMap(), _ncom_closer = new WeakMap(), _ncom_icon = new WeakMap(), _ncom_wrp = new WeakMap(), _ncom_bw = new WeakMap(), _ncom_head = new WeakMap(), _ncom_title = new WeakMap(), _ncom_content = new WeakMap(), _ncom_buttons = new WeakMap(), _ncom_state = new WeakMap(), _ncom_$cd = new WeakMap(), _ncom_id = new WeakMap(), _ncom_detached = new WeakMap(), _ncom_timerInterval = new WeakMap(), _ncom_instances = new WeakSet(), _ncom_createButtons = function _ncom_createButtons() {
+_ncom_cross = new WeakMap(), _ncom_closer = new WeakMap(), _ncom_icon = new WeakMap(), _ncom_wrp = new WeakMap(), _ncom_bw = new WeakMap(), _ncom_head = new WeakMap(), _ncom_title = new WeakMap(), _ncom_content = new WeakMap(), _ncom_buttons = new WeakMap(), _ncom_state = new WeakMap(), _ncom_$cd = new WeakMap(), _ncom_id = new WeakMap(), _ncom_detached = new WeakMap(), _ncom_timerInterval = new WeakMap(), _ncom_instances = new WeakSet(), _ncom_query = function _ncom_query(element, params) {
+    const el = document.createElement(element);
+    if (params.id)
+        el.setAttribute('id', params.id);
+    if (params.class)
+        el.classList.add(params.class);
+    if (typeof params.html === 'string')
+        el.innerHTML = params.html;
+    else if (params.html) {
+        el.append(params.html);
+    }
+    return el;
+}, _ncom_el = function _ncom_el(element) {
+    return document.querySelector(element);
+}, _ncom_createButtons = function _ncom_createButtons() {
     let res;
     if (typeof this.arg.buttons !== 'object')
         return 0;
-    __classPrivateFieldGet(this, _ncom_buttons, "f")[0].innerHTML = '';
-    jQuery.each(this.arg.buttons, (a, b) => {
-        Object(this)[`$$${a}`] = jQuery('<button/>', {
+    __classPrivateFieldGet(this, _ncom_buttons, "f").innerHTML = '';
+    Object.entries(this.arg.buttons).forEach((value) => {
+        const a = value[0];
+        const b = value[1];
+        Object(this)[`$$${a}`] = __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_query).call(this, 'button', {
             id: a,
             class: b.class || '',
             html: b.text || a,
-        })
-            .appendTo(__classPrivateFieldGet(this, _ncom_buttons, "f"))
-            .on('click', (e) => {
+        });
+        __classPrivateFieldGet(this, _ncom_buttons, "f").append(Object(this)[`$$${a}`]);
+        Object(this)[`$$${a}`].addEventListener('click', (e) => {
             e.preventDefault();
             if (typeof this.arg.onAction === 'function')
                 this.arg.onAction.apply(this, [Object(this)[`$$${a}`]]);
@@ -173,7 +201,7 @@ _ncom_cross = new WeakMap(), _ncom_closer = new WeakMap(), _ncom_icon = new Weak
                 this.close();
         });
         if (typeof b.hide === 'boolean' && b.hide)
-            Object(this)[`$$${a}`].hide();
+            Object(this)[`$$${a}`].style.display = 'none';
     });
 }, _ncom_closerIcon = function _ncom_closerIcon() {
     if (typeof this.arg.closeIcon === 'boolean' && this.arg.closeIcon)
@@ -188,7 +216,7 @@ _ncom_cross = new WeakMap(), _ncom_closer = new WeakMap(), _ncom_icon = new Weak
     else
         return 0;
 }, _ncom_startTimer = function _ncom_startTimer() {
-    const opt = this.arg.timer.split('|');
+    const opt = String(this.arg.timer).split('|');
     if (opt.length !== 2) {
         console.error("Invalid. example 'close|10000'");
         return !1;
@@ -200,49 +228,51 @@ _ncom_cross = new WeakMap(), _ncom_closer = new WeakMap(), _ncom_icon = new Weak
         return !1;
     }
     let seconds = Math.ceil(time / 1e3);
-    __classPrivateFieldSet(this, _ncom_$cd, jQuery(`<span>&nbsp(${seconds})</span>`).appendTo(Object(this)[`$$${button_key}`]), "f");
+    __classPrivateFieldSet(this, _ncom_$cd, __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_query).call(this, 'span', { html: `&nbsp(${seconds})` }), "f");
+    Object(this)[`$$${button_key}`].append(__classPrivateFieldGet(this, _ncom_$cd, "f"));
     __classPrivateFieldSet(this, _ncom_timerInterval, setInterval(() => {
-        __classPrivateFieldGet(this, _ncom_$cd, "f").html(`&nbsp;(${(seconds -= 1)})`);
+        __classPrivateFieldGet(this, _ncom_$cd, "f").innerHTML = `&nbsp;(${(seconds -= 1)})`;
         if (seconds <= 0) {
-            Object(this)[`$$${button_key}`].trigger('click');
+            Object(this)[`$$${button_key}`].dispatchEvent(new Event('click'));
             __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_stopTimer).call(this);
         }
     }, 1e3), "f");
 }, _ncom_rgnrt = function _ncom_rgnrt() {
     __classPrivateFieldSet(this, _ncom_id, new Date().getTime(), "f");
-    __classPrivateFieldGet(this, _ncom_wrp, "f").attr('id', `ncom-wrp-${__classPrivateFieldGet(this, _ncom_id, "f")}`);
-    __classPrivateFieldGet(this, _ncom_bw, "f").attr('id', `ncom-bw-${__classPrivateFieldGet(this, _ncom_id, "f")}`);
+    __classPrivateFieldGet(this, _ncom_wrp, "f").setAttribute('id', `ncom-wrp-${__classPrivateFieldGet(this, _ncom_id, "f")}`);
+    __classPrivateFieldGet(this, _ncom_bw, "f").setAttribute('id', `ncom-bw-${__classPrivateFieldGet(this, _ncom_id, "f")}`);
 }, _ncom_putContent = function _ncom_putContent() {
-    __classPrivateFieldGet(this, _ncom_bw, "f")[0].innerHTML = '';
+    __classPrivateFieldGet(this, _ncom_bw, "f").innerHTML = '';
     //head
-    __classPrivateFieldGet(this, _ncom_head, "f").prependTo(__classPrivateFieldGet(this, _ncom_bw, "f"));
+    __classPrivateFieldGet(this, _ncom_bw, "f").prepend(__classPrivateFieldGet(this, _ncom_head, "f"));
     //icon
     if (typeof this.arg.icon !== 'undefined')
-        __classPrivateFieldGet(this, _ncom_icon, "f").prependTo(__classPrivateFieldGet(this, _ncom_head, "f"));
+        __classPrivateFieldGet(this, _ncom_head, "f").prepend(__classPrivateFieldGet(this, _ncom_icon, "f"));
     else
-        __classPrivateFieldGet(this, _ncom_head, "f").addClass('ncomhead-flend');
+        __classPrivateFieldGet(this, _ncom_head, "f").classList.add('ncomhead-flend');
     //closer icon
     if (__classPrivateFieldGet(this, _ncom_instances, "m", _ncom_closerIcon).call(this))
-        __classPrivateFieldGet(this, _ncom_closer, "f").appendTo(__classPrivateFieldGet(this, _ncom_head, "f")).on('click', (e) => {
-            e.preventDefault();
-            if (typeof this.arg.onAction === 'function')
-                this.arg.onAction.apply(this, [__classPrivateFieldGet(this, _ncom_closer, "f")]);
-            this.close();
-        });
+        __classPrivateFieldGet(this, _ncom_head, "f").append(__classPrivateFieldGet(this, _ncom_closer, "f"));
+    __classPrivateFieldGet(this, _ncom_closer, "f").addEventListener('click', (e) => {
+        e.preventDefault();
+        if (typeof this.arg.onAction === 'function')
+            this.arg.onAction.apply(this, [__classPrivateFieldGet(this, _ncom_closer, "f")]);
+        this.close();
+    });
     //box title
-    __classPrivateFieldGet(this, _ncom_title, "f").appendTo(__classPrivateFieldGet(this, _ncom_bw, "f"));
+    __classPrivateFieldGet(this, _ncom_bw, "f").append(__classPrivateFieldGet(this, _ncom_title, "f"));
     //box content
-    __classPrivateFieldGet(this, _ncom_content, "f").appendTo(__classPrivateFieldGet(this, _ncom_bw, "f"));
+    __classPrivateFieldGet(this, _ncom_bw, "f").append(__classPrivateFieldGet(this, _ncom_content, "f"));
     //box buttons
-    __classPrivateFieldGet(this, _ncom_buttons, "f").appendTo(__classPrivateFieldGet(this, _ncom_bw, "f"));
+    __classPrivateFieldGet(this, _ncom_bw, "f").append(__classPrivateFieldGet(this, _ncom_buttons, "f"));
     __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_createButtons).call(this);
     Object(this).$$content = __classPrivateFieldGet(this, _ncom_content, "f");
     Object(this).$$title = __classPrivateFieldGet(this, _ncom_title, "f");
     Object(this).$$buttons = __classPrivateFieldGet(this, _ncom_buttons, "f");
     Object(this).$$icon = __classPrivateFieldGet(this, _ncom_icon, "f");
     __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_rgnrt).call(this);
-    __classPrivateFieldGet(this, _ncom_wrp, "f").html(__classPrivateFieldGet(this, _ncom_bw, "f"));
-    __classPrivateFieldGet(this, _ncom_wrp, "f").css({ 'z-index': new Date().getTime() });
+    __classPrivateFieldGet(this, _ncom_wrp, "f").appendChild(__classPrivateFieldGet(this, _ncom_bw, "f"));
+    __classPrivateFieldGet(this, _ncom_wrp, "f").style.zIndex = new Date().getTime();
     //check window innerSize
     this.domResized();
     if (typeof this.arg.onContentReady === 'function')
@@ -264,6 +294,14 @@ _ncom_cross = new WeakMap(), _ncom_closer = new WeakMap(), _ncom_icon = new Weak
     path.setAttribute('class', r[1][2]);
     svg.appendChild(path);
     return svg;
+}, _ncom_mergeCSS = function _ncom_mergeCSS() {
+    return __awaiter(this, void 0, void 0, function* () {
+        let fcss;
+        if (Object(window).fetch) {
+            fcss = yield (yield fetch('https://contents.noud-incorporate.com/ncom/ncom.v8.css')).text();
+            console.log(fcss);
+        }
+    });
 };
 __decorate([
     resizeDecorator
