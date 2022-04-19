@@ -11,7 +11,7 @@ declare const resizeDecorator: (target?: Object | undefined, propertyKey?: strin
 interface ncomButton {
     hide?: boolean;
     class?: string;
-    text?: string;
+    text?: string | HTMLElement | Node;
     action: (...args: any[]) => {};
 }
 interface ncomArg {
@@ -19,7 +19,7 @@ interface ncomArg {
     ctrlOpen?: boolean;
     timer?: string;
     title?: string;
-    content?: string;
+    content?: string | HTMLElement | Node;
     icon?: string;
     buttons?: Record<string | any, ncomButton>;
     onContentReady?: (...args: any[]) => {};
