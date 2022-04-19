@@ -111,8 +111,6 @@ class ncom {
      el.append(params.html[0]||params.html);
     }
 
-    console.log('#query',params.html, typeof params.html)
-
     return el;
   }
 
