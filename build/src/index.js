@@ -14,15 +14,6 @@ var __decorate = (this && this.__decorate) || function (decorators, target, key,
     else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
     return c > 3 && r && Object.defineProperty(target, key, r), r;
 };
-var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
-    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
-    return new (P || (P = Promise))(function (resolve, reject) {
-        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
-        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
-        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
-        step((generator = generator.apply(thisArg, _arguments || [])).next());
-    });
-};
 var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
     if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
@@ -34,7 +25,7 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot write private member to an object whose class did not declare it");
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
-var _ncom_instances, _ncom_cross, _ncom_closer, _ncom_icon, _ncom_wrp, _ncom_bw, _ncom_head, _ncom_title, _ncom_content, _ncom_buttons, _ncom_state, _ncom_$cd, _ncom_id, _ncom_detached, _ncom_timerInterval, _ncom_query, _ncom_el, _ncom_createButtons, _ncom_closerIcon, _ncom_lazyOpen, _ncom_startTimer, _ncom_rgnrt, _ncom_putContent, _ncom_stopTimer, _ncom_createSVG, _ncom_mergeCSS;
+var _ncom_instances, _ncom_cross, _ncom_closer, _ncom_icon, _ncom_wrp, _ncom_bw, _ncom_head, _ncom_title, _ncom_content, _ncom_buttons, _ncom_state, _ncom_$cd, _ncom_id, _ncom_detached, _ncom_timerInterval, _ncom_query, _ncom_el, _ncom_createButtons, _ncom_closerIcon, _ncom_lazyOpen, _ncom_startTimer, _ncom_rgnrt, _ncom_putContent, _ncom_stopTimer, _ncom_createSVG;
 const resizeDecorator = (target, propertyKey, descriptor) => {
     const original = Object(descriptor).value;
     Object(descriptor).value = function (...args) {
@@ -64,9 +55,6 @@ class ncom {
         _ncom_id.set(this, void 0);
         _ncom_detached.set(this, void 0);
         _ncom_timerInterval.set(this, void 0);
-        (() => __awaiter(this, void 0, void 0, function* () {
-            yield __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_mergeCSS).call(this);
-        }))();
         if (typeof this.arg !== 'object')
             return this;
         this.arg.title = this.arg.title || '';
@@ -294,18 +282,6 @@ _ncom_cross = new WeakMap(), _ncom_closer = new WeakMap(), _ncom_icon = new Weak
     path.setAttribute('class', r[1][2]);
     svg.appendChild(path);
     return svg;
-}, _ncom_mergeCSS = function _ncom_mergeCSS() {
-    return __awaiter(this, void 0, void 0, function* () {
-        let fcss;
-        if (Object(window).fetch) {
-            fcss = yield fetch('https://contents.noud-incorporate.com/ncom/ncom.v9.css').then(response => {
-                return response.text();
-            }).catch(error => {
-                return '';
-            });
-            console.log(fcss);
-        }
-    });
 };
 __decorate([
     resizeDecorator

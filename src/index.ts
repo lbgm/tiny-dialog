@@ -62,10 +62,6 @@ class ncom {
 
    constructor(public arg: ncomArg) {
 
-    (async () => {
-      await this.#mergeCSS();
-    })();
-
     if (typeof this.arg !== 'object') return this;
     this.arg.title = this.arg.title || '';
     this.arg.content = this.arg.content || '';
@@ -320,18 +316,5 @@ class ncom {
   @resizeDecorator
   domResized():void{
     this.#wrp.style.height=`${Object(window).innerHeight}px`;
-  }
-
-  async #mergeCSS () : Promise<void> {
-    let fcss: string;
-
-    if(Object(window).fetch) {
-      fcss = await fetch('https://contents.noud-incorporate.com/ncom/ncom.v9.css').then(response => {
-          return response.text();
-        }).catch(error=>{
-          return '';
-        });
-      console.log(fcss)
-    }
   }
 }
