@@ -153,9 +153,9 @@ class ncom {
 _ncom_cross = new WeakMap(), _ncom_closer = new WeakMap(), _ncom_icon = new WeakMap(), _ncom_wrp = new WeakMap(), _ncom_bw = new WeakMap(), _ncom_head = new WeakMap(), _ncom_title = new WeakMap(), _ncom_content = new WeakMap(), _ncom_buttons = new WeakMap(), _ncom_state = new WeakMap(), _ncom_$cd = new WeakMap(), _ncom_id = new WeakMap(), _ncom_detached = new WeakMap(), _ncom_timerInterval = new WeakMap(), _ncom_instances = new WeakSet(), _ncom_query = function _ncom_query(element, params) {
     const el = document.createElement(element);
     if (params.id)
-        el.setAttribute('id', params.id);
+        el.id = params.id;
     if (params.class)
-        el.classList.add(params.class);
+        el.className = params.class;
     if (typeof params.html === 'string')
         el.innerHTML = params.html;
     else if (params.html) {
