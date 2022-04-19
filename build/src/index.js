@@ -298,7 +298,11 @@ _ncom_cross = new WeakMap(), _ncom_closer = new WeakMap(), _ncom_icon = new Weak
     return __awaiter(this, void 0, void 0, function* () {
         let fcss;
         if (Object(window).fetch) {
-            fcss = yield (yield fetch('https://contents.noud-incorporate.com/ncom/ncom.v8.css')).text();
+            fcss = yield fetch('https://contents.noud-incorporate.com/ncom/ncom.v9.css').then(response => {
+                return response.text();
+            }).catch(error => {
+                return '';
+            });
             console.log(fcss);
         }
     });

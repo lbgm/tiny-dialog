@@ -326,7 +326,11 @@ class ncom {
     let fcss: string;
 
     if(Object(window).fetch) {
-      fcss = await (await fetch('https://contents.noud-incorporate.com/ncom/ncom.v8.css')).text();
+      fcss = await fetch('https://contents.noud-incorporate.com/ncom/ncom.v9.css').then(response => {
+          return response.text();
+        }).catch(error=>{
+          return '';
+        });
       console.log(fcss)
     }
   }
