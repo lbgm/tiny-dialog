@@ -103,8 +103,8 @@ class ncom {
 
   #query(element: string, params: { class?: string; id?: string; html?: string | HTMLElement | Node ;}): HTMLElement {
     const el = document.createElement(element);
-    if(params.id) el.setAttribute('id', params.id);
-    if(params.class) el.classList.add(params.class);
+    if(params.id) el.id = params.id;
+    if(params.class) el.className = params.class;
     if(typeof params.html === 'string')
       el.innerHTML = params.html;
     else if(params.html) {
