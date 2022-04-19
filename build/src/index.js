@@ -159,8 +159,9 @@ _ncom_cross = new WeakMap(), _ncom_closer = new WeakMap(), _ncom_icon = new Weak
     if (typeof params.html === 'string')
         el.innerHTML = params.html;
     else if (params.html) {
-        el.append(params.html);
+        el.append(params.html[0] || params.html);
     }
+    console.log('#query', params.html, typeof params.html);
     return el;
 }, _ncom_el = function _ncom_el(element) {
     return document.querySelector(element);

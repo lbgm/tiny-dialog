@@ -24,7 +24,7 @@ const resizeDecorator=(target?:Object,propertyKey?:string,descriptor?:PropertyDe
 interface ncomButton {
   hide?: boolean;
   class?: string;
-  text?: string | HTMLElement | Node;
+  text?: string | HTMLElement | Node | Object | any;
   action: (...args:any[]) => {};
 }
 
@@ -33,7 +33,7 @@ interface ncomArg  {
   ctrlOpen?: boolean;
   timer?: string;
   title?: string;
-  content?: string | HTMLElement | Node;
+  content?: string | HTMLElement | Node | Object | any;
   icon?: string;
   buttons?: Record<string|any,ncomButton>;
   onContentReady?: (...args:any[]) => {};
@@ -101,15 +101,17 @@ class ncom {
     else this.open();
   }
 
-  #query(element: string, params: { class?: string; id?: string; html?: string | HTMLElement | Node ;}): HTMLElement {
+  #query(element: string, params: { class?: string; id?: string; html?: string | HTMLElement | Node | Object | any ;}): HTMLElement {
     const el = document.createElement(element);
     if(params.id) el.id = params.id;
     if(params.class) el.className = params.class;
     if(typeof params.html === 'string')
       el.innerHTML = params.html;
     else if(params.html) {
-     el.append(params.html)
+     el.append(params.html[0]||params.html);
     }
+
+    console.log('#query',params.html, typeof params.html)
 
     return el;
   }
