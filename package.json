@@ -1,6 +1,6 @@
 {
   "name": "ncom",
-  "version": "9.0.0",
+  "version": "9.0.1",
   "description": "JS dialog box",
   "main": "build/src/index.js",
   "types": "build/src/index.d.ts",

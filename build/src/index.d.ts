@@ -7,7 +7,7 @@
  * Copyright NOUD, Inc. Software & Network Engineering
  * Licensed Free
  */
-declare const resizeDecorator: (target?: Object | undefined, propertyKey?: string | undefined, descriptor?: PropertyDescriptor | undefined) => PropertyDescriptor | undefined;
+declare const resizeDecorator: (target?: Object, propertyKey?: string, descriptor?: PropertyDescriptor) => PropertyDescriptor | undefined;
 interface ncomButton {
     hide?: boolean;
     class?: string;

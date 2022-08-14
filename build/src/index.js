@@ -111,7 +111,8 @@ class ncom {
         if (typeof res !== 'undefined' && !res)
             return !0;
         __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_stopTimer).call(this);
-        __classPrivateFieldSet(this, _ncom_detached, __classPrivateFieldGet(this, _ncom_wrp, "f").remove(), "f");
+        __classPrivateFieldSet(this, _ncom_detached, __classPrivateFieldGet(this, _ncom_wrp, "f"), "f");
+        __classPrivateFieldGet(this, _ncom_wrp, "f").remove();
         __classPrivateFieldSet(this, _ncom_state, 300, "f");
         __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_el).call(this, 'body').removeAttribute('data-ncom-is-under');
         return !0;

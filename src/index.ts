@@ -280,7 +280,8 @@ class ncom {
       res = this.arg.onClose.apply(this);
     if (typeof res !== 'undefined' && !res) return !0;
     this.#stopTimer();
-    this.#detached = this.#wrp.remove();
+    this.#detached = this.#wrp;
+    this.#wrp.remove();
     this.#state = 300;
     this.#el('body').removeAttribute('data-ncom-is-under');
     return !0;
