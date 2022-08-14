@@ -25,7 +25,7 @@ interface ncomButton {
   hide?: boolean;
   class?: string;
   text?: string | HTMLElement | Node | Object | any;
-  action: (...args:any[]) => {};
+  action: (...args:any[]) => any;
 }
 
 interface ncomArg  {
@@ -36,12 +36,12 @@ interface ncomArg  {
   content?: string | HTMLElement | Node | Object | any;
   icon?: string;
   buttons?: Record<string|any,ncomButton>;
-  onContentReady?: (...args:any[]) => {};
-  onOpenBefore?: (...args:any[]) => {};
-  onOpen?: (...args:any[]) => {};
-  onAction?: (...args:any[]) => {};
-  onClose?: (...args:any[]) => {};
-  onDestroy?: (...args:any[]) => {};
+  onContentReady?: (...args:any[]) => any;
+  onOpenBefore?: (...args:any[]) => any;
+  onOpen?: (...args:any[]) => any;
+  onAction?: (...args:any[]) => any;
+  onClose?: (...args:any[]) => any;
+  onDestroy?: (...args:any[]) => any;
 }
 
 class ncom {
