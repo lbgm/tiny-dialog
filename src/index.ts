@@ -7,7 +7,6 @@
  * Copyright NOUD, Inc. Software & Network Engineering
  * Licensed Free
  */
-import './assets/ncom.css';
 
 const resizeDecorator=(target?:Object,propertyKey?:string,descriptor?:PropertyDescriptor)=>{
   const original= Object(descriptor).value;
