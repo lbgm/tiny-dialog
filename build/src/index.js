@@ -1,4 +1,13 @@
 "use strict";
+/*!
+ * NCOM Dialog Box
+ * Author: NOUD, Inc. Developers
+ *         Balthazar DOSSOU {dosanel@outlook.fr}
+ *         Rodolphe SOUNLIN {rodolphe.sounlin@yahoo.fr}
+ *
+ * Copyright NOUD, Inc. Software & Network Engineering
+ * Licensed Free
+ */
 var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
     if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -17,17 +26,6 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
 var _ncom_instances, _ncom_cross, _ncom_closer, _ncom_icon, _ncom_wrp, _ncom_bw, _ncom_head, _ncom_title, _ncom_content, _ncom_buttons, _ncom_state, _ncom_$cd, _ncom_id, _ncom_detached, _ncom_timerInterval, _ncom_query, _ncom_el, _ncom_createButtons, _ncom_closerIcon, _ncom_lazyOpen, _ncom_startTimer, _ncom_rgnrt, _ncom_putContent, _ncom_stopTimer, _ncom_createSVG;
-Object.defineProperty(exports, "__esModule", { value: true });
-/*!
- * NCOM Dialog Box
- * Author: NOUD, Inc. Developers
- *         Balthazar DOSSOU {dosanel@outlook.fr}
- *         Rodolphe SOUNLIN {rodolphe.sounlin@yahoo.fr}
- *
- * Copyright NOUD, Inc. Software & Network Engineering
- * Licensed Free
- */
-require("./assets/ncom.css");
 const resizeDecorator = (target, propertyKey, descriptor) => {
     const original = Object(descriptor).value;
     Object(descriptor).value = function (...args) {
