@@ -6,7 +6,7 @@
     "lib": [
      "es5",
      "es6",
-     "dom" 
+     "dom"
     ],
     "target": "es2015",
     "module": "commonjs",
@@ -14,6 +14,7 @@
   },
   "include": [
     "src/**/*.ts",
+    "src/**/*",
     "test/**/*.ts"
   ],
   "moduleResolution": "node",

@@ -8,7 +8,7 @@ You can add it to any Web Project such as Project like with Angular Front-End Fr
 Fully compatible with FontAwesome Icons.
 
 ## Using Example
-```
+```js
 <script type="text/javascript">
 var myDialog = new ncom({
        closeIcon:true,
