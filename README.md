@@ -9,12 +9,12 @@ Fully compatible with FontAwesome Icons.
 
 ## Using on Node Js
 ```sh
-npm install ncom
+npm install @lbgm/ncom
 ```
 
 ```ts
 // in main.ts|js
-import "ncom/build/src/assets/ncom.css"
+import "@lbgm/ncom/build/src/assets/ncom.css"
 
 // anywhere
 import { ncom } from "ncom";
