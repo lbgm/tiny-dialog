@@ -7,14 +7,13 @@
  * Copyright NOUD, Inc. Software & Network Engineering
  * Licensed Free
  */
-declare const resizeDecorator: (target?: Object, propertyKey?: string, descriptor?: PropertyDescriptor) => PropertyDescriptor | undefined;
-interface ncomButton {
+export interface ncomButton {
     hide?: boolean;
     class?: string;
     text?: string | HTMLElement | Node | Object | any;
     action: (...args: any[]) => any;
 }
-interface ncomArg {
+export interface ncomArg {
     closeIcon?: boolean;
     ctrlOpen?: boolean;
     timer?: string;
@@ -29,7 +28,7 @@ interface ncomArg {
     onClose?: (...args: any[]) => any;
     onDestroy?: (...args: any[]) => any;
 }
-declare class ncom {
+export declare class ncom {
     #private;
     arg: ncomArg;
     constructor(arg: ncomArg);

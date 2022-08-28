@@ -21,14 +21,14 @@ const resizeDecorator=(target?:Object,propertyKey?:string,descriptor?:PropertyDe
   return descriptor;
 }
 
-interface ncomButton {
+export interface ncomButton {
   hide?: boolean;
   class?: string;
   text?: string | HTMLElement | Node | Object | any;
   action: (...args:any[]) => any;
 }
 
-interface ncomArg  {
+export interface ncomArg  {
   closeIcon?: boolean;
   ctrlOpen?: boolean;
   timer?: string;
@@ -44,7 +44,7 @@ interface ncomArg  {
   onDestroy?: (...args:any[]) => any;
 }
 
-class ncom {
+export class ncom {
   #cross?: any;
   #closer?: any;
   #icon?: any;

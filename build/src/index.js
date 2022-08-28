@@ -26,6 +26,8 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
 var _ncom_instances, _ncom_cross, _ncom_closer, _ncom_icon, _ncom_wrp, _ncom_bw, _ncom_head, _ncom_title, _ncom_content, _ncom_buttons, _ncom_state, _ncom_$cd, _ncom_id, _ncom_detached, _ncom_timerInterval, _ncom_query, _ncom_el, _ncom_createButtons, _ncom_closerIcon, _ncom_lazyOpen, _ncom_startTimer, _ncom_rgnrt, _ncom_putContent, _ncom_stopTimer, _ncom_createSVG;
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.ncom = void 0;
 const resizeDecorator = (target, propertyKey, descriptor) => {
     const original = Object(descriptor).value;
     Object(descriptor).value = function (...args) {
@@ -287,4 +289,5 @@ _ncom_cross = new WeakMap(), _ncom_closer = new WeakMap(), _ncom_icon = new Weak
 __decorate([
     resizeDecorator
 ], ncom.prototype, "domResized", null);
+exports.ncom = ncom;
 //# sourceMappingURL=index.js.map

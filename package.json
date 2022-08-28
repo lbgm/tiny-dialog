@@ -13,7 +13,9 @@
     "vuejs",
     "angular",
     "dialog box",
-    "typescript"
+    "typescript",
+    "javascript",
+    "typescript dialog box"
   ],
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
