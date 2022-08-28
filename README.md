@@ -17,7 +17,7 @@ npm install @lbgm/ncom
 import "@lbgm/ncom/build/src/assets/ncom.css"
 
 // anywhere
-import { ncom } from "ncom";
+import { ncom } from "@lbgm/ncom";
 
 const mydialog = new ncom({
        closeIcon:true,
