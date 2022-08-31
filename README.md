@@ -2,6 +2,9 @@
 Tiny Javascript dialog box made with TypeScript
 (https://docs.noud-incorporate.com/ncom/)
 
+![ncom-v9](https://user-images.githubusercontent.com/92580505/187638344-def82804-85fa-4b16-83df-36b62e87bdc0.png)
+
+
 ## Description
 nCom.js is a tiny, flexible and featured javascript dialog box. Wrote in TypeScript and compiled to es2015.
 You can add it to any Web Project such as Project like with Angular Front-End Framework.
