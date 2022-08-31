@@ -1,6 +1,6 @@
 {
   "name": "@lbgm/ncom",
-  "version": "9.0.2-a",
+  "version": "9.0.2-b",
   "author": "@lbgm",
   "description": "JS dialog box",
   "main": "build/src/index.js",
@@ -17,6 +17,10 @@
     "javascript",
     "typescript dialog box"
   ],
+  "engines": {
+    "node": ">=14.18.3",
+    "npm": ">=6.14.15"
+  },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "gts lint",
