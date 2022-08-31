@@ -2,7 +2,8 @@
 Tiny Javascript dialog box made with TypeScript
 (https://docs.noud-incorporate.com/ncom/)
 
-![ncom-v9](https://user-images.githubusercontent.com/92580505/187638344-def82804-85fa-4b16-83df-36b62e87bdc0.png)
+<img width="750" alt="ncom-v9-c" src="https://user-images.githubusercontent.com/92580505/187641454-cf009469-e5c3-4f49-8319-f32f61d6b21a.png">
+
 
 
 ## Description
