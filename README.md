@@ -17,8 +17,8 @@ npm install @lbgm/ncom
 ```
 
 ```ts
-// in main.ts|js
-import "@lbgm/ncom/build/src/assets/ncom.css"
+// import style
+import "@lbgm/ncom/style"
 
 // anywhere
 import { ncom } from "@lbgm/ncom";
@@ -89,6 +89,5 @@ var myDialog = new ncom({
 
 `timer:"ok|3600000"` : this parameter takes one ncom button id and a  time in milliseconds to automatically click on target'button.
 
-<!-- ## StyleSheet
-You can modify elements styles as you needed
-(https://contents.noud-incorporate.com/ncom/ncom.v9.css) -->
+## CDN
+

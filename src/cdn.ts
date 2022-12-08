@@ -1,3 +1,8 @@
+import * as pkg from './index';
+
+const { ncom } = pkg;
+
+const ncomStyle = `
 /**!
  * nCom.js CSS
  *
@@ -115,3 +120,18 @@ body[data-ncom-is-under] {
 .ncomcross {
     fill: rgba(68, 68, 68, .5)
 }
+`;
+
+
+(()=> {
+const styleElement: HTMLStyleElement = document.createElement('style');
+styleElement.setAttribute('type','text/css');
+styleElement.setAttribute('data-ncom', 'style');
+
+styleElement.innerHTML = ncomStyle;
+
+const head = document.head || document.getElementsByTagName('head')[0];
+
+if(head) head.appendChild(styleElement);
+
+})();
