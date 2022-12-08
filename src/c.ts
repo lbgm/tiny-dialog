@@ -1,6 +1,8 @@
 import * as pkg from './index.js';
 
-var { ncom } = pkg;
+const { ncom: dialog } = pkg;
+
+(window as any).ncom = dialog;
 
 const ncomStyle = `
 /**!

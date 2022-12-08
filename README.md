@@ -91,3 +91,8 @@ var myDialog = new ncom({
 
 ## CDN
 
+Versionning is not enforced. Hash the file yourself to load realtime change if needed
+
+```html
+<script type="module" src="https://noud-incorporate.com/cdn/ncom/v9/c.js?your_hash"></script>
+```

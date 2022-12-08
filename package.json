@@ -14,7 +14,7 @@
       "require": "./build/src/assets/ncom.css"
     },
     "./cdn": {
-      "import": "./build/src/cdn.js",
+      "import": "./build/src/c.js",
       "require": "./build/src/index.js"
     }
   },
