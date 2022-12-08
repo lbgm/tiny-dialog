@@ -1,4 +1,4 @@
-import * as pkg from './index';
+import * as pkg from './index.js';
 
 var { ncom } = pkg;
 

@@ -4,13 +4,12 @@
     "rootDir": ".",
     "outDir": "build",
     "lib": [
-     "es5",
      "es6",
      "dom"
     ],
-    "target": "es2015",
-    "module": "commonjs",
-    "experimentalDecorators": true
+    "target": "es6",
+    "module": "es6",
+    "experimentalDecorators": true,
   },
   "include": [
     "src/**/*.ts",
