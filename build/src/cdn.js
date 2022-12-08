@@ -1,7 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 const pkg = require("./index");
-const { ncom } = pkg;
+var { ncom } = pkg;
 const ncomStyle = `
 /**!
  * nCom.js CSS

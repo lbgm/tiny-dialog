@@ -1,6 +1,6 @@
 import * as pkg from './index';
 
-const { ncom } = pkg;
+var { ncom } = pkg;
 
 const ncomStyle = `
 /**!
