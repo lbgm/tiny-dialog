@@ -7,7 +7,7 @@ Tiny Javascript dialog box made with TypeScript
 
 
 ## Description
-nCom.js is a tiny, flexible and featured javascript dialog box. Wrote in TypeScript and compiled to es2015.
+nCom.js is a tiny, flexible and featured javascript dialog box wrote in TypeScript.
 You can add it to any Web Project such as Project like with Angular Front-End Framework.
 Fully compatible with FontAwesome Icons.
 
