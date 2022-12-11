@@ -24,8 +24,6 @@ import "@lbgm/ncom/style"
 // anywhere
 import { ncom } from "@lbgm/ncom";
 
-import "./styles.css";
-
 const mydialog = new ncom({
   closeIcon: true,
   ctrlOpen: false,
@@ -68,11 +66,13 @@ const mydialog = new ncom({
     // do something
   }
 });
-
+```
 
 
 ## Using Example with HTML
-import #CDN first
+
+import [the script module from CDN](#cdn) first
+
 ```js
 <script type="text/javascript">
 
@@ -109,7 +109,7 @@ const mydialog = new ncom({
 Versionning is not enforced. Hash the file yourself to load realtime change if needed
 
 ```html
-<script type="module" src="https://noud-incorporate.com/cdn/ncom/v9/c.js?your_hash"></script>
+<script type="module" src="https://contents.noud-incorporate.com/ncom/v9/c.js?your_hash"></script>
 ```
 
 ## Docs
