@@ -8,6 +8,12 @@
  * Copyright NOUD, Inc. Software & Network Engineering
  * Licensed Free
  */
+var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
+    var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
+    if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
+    else for (var i = decorators.length - 1; i >= 0; i--) if (d = decorators[i]) r = (c < 3 ? d(r) : c > 3 ? d(target, key, r) : d(target, key)) || r;
+    return c > 3 && r && Object.defineProperty(target, key, r), r;
+};
 var __classPrivateFieldGet = (this && this.__classPrivateFieldGet) || function (receiver, state, kind, f) {
     if (kind === "a" && !f) throw new TypeError("Private accessor was defined without a getter");
     if (typeof state === "function" ? receiver !== state || !f : !state.has(receiver)) throw new TypeError("Cannot read private member from an object whose class did not declare it");
@@ -20,6 +26,17 @@ var __classPrivateFieldSet = (this && this.__classPrivateFieldSet) || function (
     return (kind === "a" ? f.call(receiver, value) : f ? f.value = value : state.set(receiver, value)), value;
 };
 var _ncom_instances, _ncom_cross, _ncom_closer, _ncom_icon, _ncom_wrp, _ncom_bw, _ncom_head, _ncom_title, _ncom_content, _ncom_buttons, _ncom_state, _ncom_$cd, _ncom_id, _ncom_detached, _ncom_timerInterval, _ncom_createButtons, _ncom_closerIcon, _ncom_lazyOpen, _ncom_startTimer, _ncom_rgnrt, _ncom_putContent, _ncom_stopTimer, _ncom_createSVG;
+const resizeDecorator = (target, propertyKey, descriptor) => {
+    const original = Object(descriptor).value;
+    Object(descriptor).value = function (...args) {
+        let result = original.apply(this, args);
+        window.addEventListener('resize', (e) => {
+            result = original.apply(this, args);
+        });
+        return result;
+    };
+    return descriptor;
+};
 class ncom {
     constructor(arg) {
         this.arg = arg;
@@ -129,6 +146,9 @@ class ncom {
             return !1;
         }
     }
+    domResized() {
+        __classPrivateFieldGet(this, _ncom_wrp, "f")[0].style.height = `${Object(window).innerHeight}px`;
+    }
 }
 _ncom_cross = new WeakMap(), _ncom_closer = new WeakMap(), _ncom_icon = new WeakMap(), _ncom_wrp = new WeakMap(), _ncom_bw = new WeakMap(), _ncom_head = new WeakMap(), _ncom_title = new WeakMap(), _ncom_content = new WeakMap(), _ncom_buttons = new WeakMap(), _ncom_state = new WeakMap(), _ncom_$cd = new WeakMap(), _ncom_id = new WeakMap(), _ncom_detached = new WeakMap(), _ncom_timerInterval = new WeakMap(), _ncom_instances = new WeakSet(), _ncom_createButtons = function _ncom_createButtons() {
     let res;
@@ -223,6 +243,8 @@ _ncom_cross = new WeakMap(), _ncom_closer = new WeakMap(), _ncom_icon = new Weak
     __classPrivateFieldGet(this, _ncom_instances, "m", _ncom_rgnrt).call(this);
     __classPrivateFieldGet(this, _ncom_wrp, "f").html(__classPrivateFieldGet(this, _ncom_bw, "f"));
     __classPrivateFieldGet(this, _ncom_wrp, "f").css({ 'z-index': new Date().getTime() });
+    //check window innerSize
+    this.domResized();
     if (typeof this.arg.onContentReady === 'function')
         this.arg.onContentReady.apply(this);
 }, _ncom_stopTimer = function _ncom_stopTimer() {
@@ -243,4 +265,7 @@ _ncom_cross = new WeakMap(), _ncom_closer = new WeakMap(), _ncom_icon = new Weak
     svg.appendChild(path);
     return svg;
 };
+__decorate([
+    resizeDecorator
+], ncom.prototype, "domResized", null);
 //# sourceMappingURL=index.js.map

@@ -7,6 +7,7 @@
  * Copyright NOUD, Inc. Software & Network Engineering
  * Licensed Free
  */
+declare const resizeDecorator: (target?: Object | undefined, propertyKey?: string | undefined, descriptor?: PropertyDescriptor | undefined) => PropertyDescriptor | undefined;
 declare class ncom {
     #private;
     arg?: any;
@@ -15,4 +16,5 @@ declare class ncom {
     close(): any;
     open(): any;
     isOpen(): any;
+    domResized(): void;
 }

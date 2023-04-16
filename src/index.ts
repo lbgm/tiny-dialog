@@ -8,6 +8,19 @@
  * Licensed Free
  */
 
+const resizeDecorator=(target?:Object,propertyKey?:string,descriptor?:PropertyDescriptor)=>{
+  const original= Object(descriptor).value;
+  Object(descriptor).value=function(...args:any){
+    let result=original.apply(this,args);
+    window.addEventListener('resize',(e)=>{
+      result=original.apply(this,args);
+    });
+    return result;
+  }
+
+  return descriptor;
+}
+
 class ncom {
   #cross?: any;
   #closer?: any;
@@ -166,6 +179,9 @@ class ncom {
 
     this.#wrp.css({'z-index': new Date().getTime()});
 
+    //check window innerSize
+    this.domResized();
+
     if (typeof this.arg.onContentReady === 'function')
       this.arg.onContentReady.apply(this);
   }
@@ -244,5 +260,10 @@ class ncom {
       void e;
       return !1;
     }
+  }
+
+  @resizeDecorator
+  domResized():void{
+    this.#wrp[0].style.height=`${Object(window).innerHeight}px`;
   }
 }

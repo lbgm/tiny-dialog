@@ -10,6 +10,7 @@
     ],
     "target": "es2015",
     "module": "commonjs",
+    "experimentalDecorators": true
   },
   "include": [
     "src/**/*.ts",
