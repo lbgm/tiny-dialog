@@ -100,7 +100,6 @@ const mydialog = new ncom({
     }
   },
 });
-
 </script>
 ```
 
