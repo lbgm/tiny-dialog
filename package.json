@@ -1,6 +1,6 @@
 {
   "name": "@lbgm/ncom",
-  "version": "9.0.2-f",
+  "version": "9.0.2-g",
   "author": "@lbgm",
   "description": "JS dialog box",
   "main": "build/src/index.js",

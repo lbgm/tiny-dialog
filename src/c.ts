@@ -1,8 +1,10 @@
-import * as pkg from './index.js';
+import { ncom } from './index.js';
 
-const { ncom: dialog } = pkg;
+type WWindow = typeof window & {
+    ncom: typeof ncom;
+};
 
-(window as any).ncom = dialog;
+(window as WWindow).ncom = ncom;
 
 const ncomStyle = `
 /**!
@@ -125,15 +127,15 @@ body[data-ncom-is-under] {
 `;
 
 
-(()=> {
-const styleElement: HTMLStyleElement = document.createElement('style');
-styleElement.setAttribute('type','text/css');
-styleElement.setAttribute('data-ncom', 'style');
+(() => {
+    const styleElement: HTMLStyleElement = document.createElement('style');
+    styleElement.setAttribute('type', 'text/css');
+    styleElement.setAttribute('data-ncom', 'style');
 
-styleElement.innerHTML = ncomStyle;
+    styleElement.innerHTML = ncomStyle;
 
-const head = document.head || document.getElementsByTagName('head')[0];
+    const head = document.head || document.getElementsByTagName('head')[0];
 
-if(head) head.appendChild(styleElement);
+    if (head) head.appendChild(styleElement);
 
 })();

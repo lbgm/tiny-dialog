@@ -8,12 +8,12 @@
  * Licensed Free
  */
 
-const resizeDecorator=(target?:Object,propertyKey?:string,descriptor?:PropertyDescriptor)=>{
-  const original= Object(descriptor).value;
-  Object(descriptor).value=function(...args:any){
-    let result=original.apply(this,args);
-    window.addEventListener('resize',(e)=>{
-      result=original.apply(this,args);
+const resizeDecorator = (target?: Object, propertyKey?: string, descriptor?: PropertyDescriptor): PropertyDescriptor | undefined => {
+  const original = (descriptor as PropertyDescriptor).value as () => void;
+  (descriptor as PropertyDescriptor).value = function (...args: any) {
+    let result = original.apply(this, args);
+    window.addEventListener('resize', (e) => {
+      result = original.apply(this, args);
     });
     return result;
   }
@@ -25,42 +25,47 @@ export interface ncomButton {
   hide?: boolean;
   class?: string;
   text?: string | HTMLElement | Node | Object | any;
-  action: (...args:any[]) => any;
+  action: (...args: any[]) => any;
 }
 
-export interface ncomArg  {
+export interface ncomArg {
   closeIcon?: boolean;
   ctrlOpen?: boolean;
   timer?: string;
   title?: string;
   content?: string | HTMLElement | Node | Object | any;
   icon?: string;
-  buttons?: Record<string|any,ncomButton>;
-  onContentReady?: (...args:any[]) => any;
-  onOpenBefore?: (...args:any[]) => any;
-  onOpen?: (...args:any[]) => any;
-  onAction?: (...args:any[]) => any;
-  onClose?: (...args:any[]) => any;
-  onDestroy?: (...args:any[]) => any;
+  buttons?: Record<string | any, ncomButton>;
+  onContentReady?: (...args: any[]) => any;
+  onOpenBefore?: (...args: any[]) => any;
+  onOpen?: (...args: any[]) => any;
+  onAction?: (...args: any[]) => any;
+  onClose?: (...args: any[]) => any;
+  onDestroy?: (...args: any[]) => any;
 }
 
 export class ncom {
-  #cross?: any;
-  #closer?: any;
-  #icon?: any;
-  #wrp?: any;
-  #bw?: any;
-  #head?: any;
-  #title?: any;
-  #content?: any;
-  #buttons?: any;
+  #cross?: SVGSVGElement;
+  #closer?: HTMLDivElement;
+  #icon?: HTMLDivElement;
+  #wrp?: HTMLDivElement;
+  #bw?: HTMLDivElement;
+  #head?: HTMLDivElement;
+  #title?: HTMLDivElement;
+  #content?: HTMLDivElement;
+  #buttons?: HTMLDivElement;
   #state?: number;
-  #$cd?: any;
+  #$cd?: HTMLSpanElement;
   #id?: number;
-  #detached?: any ;
-  #timerInterval?: any;
+  #detached?: HTMLDivElement;
+  #timerInterval?: NodeJS.Timeout;
 
-   constructor(public arg: ncomArg) {
+  $$content!: HTMLDivElement;
+  $$title!: HTMLDivElement;
+  $$buttons!: HTMLDivElement;
+  $$icon!: HTMLDivElement;
+
+  constructor(public arg: ncomArg) {
 
     if (typeof this.arg !== 'object') return this;
     this.arg.title = this.arg.title || '';
@@ -76,22 +81,22 @@ export class ncom {
         'ncomcrosspath',
       ]
     );
-    this.#closer = this.#query('div', {class: 'ncomcloser', html: this.#cross});
+    this.#closer = this.#query('div', { class: 'ncomcloser', html: this.#cross }) as HTMLDivElement;
     this.#icon = this.#query('div', {
       class: 'nicon',
-      html: this.#query('i', {class: this.arg.icon || ''}),
-    });
+      html: this.#query('i', { class: this.arg.icon || '' }),
+    }) as HTMLDivElement;
 
-    this.#wrp = this.#query('div', {class: 'ncomwrp'});
-    this.#bw = this.#query('div', {class: 'ncombw'});
+    this.#wrp = this.#query('div', { class: 'ncomwrp' }) as HTMLDivElement;
+    this.#bw = this.#query('div', { class: 'ncombw' }) as HTMLDivElement;
 
-    this.#head = this.#query('div', {class: 'ncomhead'});
-    this.#title = this.#query('div', {class: 'ncomtitle', html: this.arg.title});
+    this.#head = this.#query('div', { class: 'ncomhead' }) as HTMLDivElement;
+    this.#title = this.#query('div', { class: 'ncomtitle', html: this.arg.title }) as HTMLDivElement;
     this.#content = this.#query('div', {
       class: 'ncomcontent',
       html: this.arg.content,
-    });
-    this.#buttons = this.#query('div', {class: 'ncombtns'});
+    }) as HTMLDivElement;
+    this.#buttons = this.#query('div', { class: 'ncombtns' }) as HTMLDivElement;
 
     this.#putContent();
 
@@ -101,46 +106,46 @@ export class ncom {
     else this.open();
   }
 
-  #query(element: string, params: { class?: string; id?: string; html?: string | HTMLElement | Node | Object | any ;}): HTMLElement {
+  #query(element: string, params: { class?: string; id?: string; html?: string | HTMLElement | Node | Object | any; }): HTMLElement {
     const el = document.createElement(element);
-    if(params.id) el.id = params.id;
-    if(params.class) el.className = params.class;
-    if(typeof params.html === 'string')
+    if (params.id) el.id = params.id;
+    if (params.class) el.className = params.class;
+    if (typeof params.html === 'string')
       el.innerHTML = params.html;
-    else if(params.html) {
-     el.append(params.html[0]||params.html);
+    else if (params.html) {
+      el.append(params.html[0] || params.html);
     }
 
     return el;
   }
 
-  #el(element: string): any {
+  #el(element: string): HTMLElement | null {
     return document.querySelector(element);
   }
 
-  #createButtons(): any /**/ {
+  #createButtons(): number | void {
     let res: any;
     if (typeof this.arg.buttons !== 'object') return 0;
-    this.#buttons.innerHTML = '';
-    Object.entries(this.arg.buttons).forEach( (value: [string,ncomButton]) => {
+    this.#buttons!.innerHTML = '';
+    Object.entries(this.arg.buttons).forEach((value: [string, ncomButton]) => {
       const a = value[0];
       const b = value[1];
       Object(this)[`$$${a}`] = this.#query('button', {
         id: a,
         class: b.class || '',
         html: b.text || a,
+      }) as HTMLButtonElement;
+      this.#buttons!.append(Object(this)[`$$${a}`]);
+      Object(this)[`$$${a}`].addEventListener('click', (e: Event) => {
+        e.preventDefault();
+        if (typeof this.arg.onAction === 'function')
+          this.arg.onAction.apply(this, [Object(this)[`$$${a}`]]);
+        if (typeof b.action !== 'undefined')
+          res = b.action.apply(this, [e, Object(this)[`$$${a}`]]);
+        this.#stopTimer();
+        if (typeof res === 'undefined' || res) this.close();
       });
-      this.#buttons.append(Object(this)[`$$${a}`]);
-      Object(this)[`$$${a}`].addEventListener('click', (e: any) => {
-          e.preventDefault();
-          if (typeof this.arg.onAction === 'function')
-            this.arg.onAction.apply(this, [Object(this)[`$$${a}`]]);
-          if (typeof b.action !== 'undefined')
-            res = b.action.apply(this, [e, Object(this)[`$$${a}`]]);
-          this.#stopTimer();
-          if (typeof res === 'undefined' || res) this.close();
-        });
-      if (typeof b.hide === 'boolean' && b.hide) Object(this)[`$$${a}`].style.display = 'none';
+      if (typeof b.hide === 'boolean' && b.hide) (Object(this)[`$$${a}`] as HTMLButtonElement).style.display = 'none';
     });
   }
 
@@ -174,11 +179,11 @@ export class ncom {
       return !1;
     }
     let seconds = Math.ceil(time / 1e3);
-    this.#$cd = this.#query('span', { html: `&nbsp(${seconds})`});
+    this.#$cd = this.#query('span', { html: `&nbsp(${seconds})` });
     Object(this)[`$$${button_key}`].append(this.#$cd);
 
     this.#timerInterval = setInterval(() => {
-      this.#$cd.innerHTML = `&nbsp;(${(seconds -= 1)})` ;
+      this.#$cd!.innerHTML = `&nbsp;(${(seconds -= 1)})`;
       if (seconds <= 0) {
         Object(this)[`$$${button_key}`].dispatchEvent(new Event('click'));
         this.#stopTimer();
@@ -188,47 +193,47 @@ export class ncom {
 
   #rgnrt(): void {
     this.#id = new Date().getTime();
-    this.#wrp.setAttribute('id', `ncom-wrp-${this.#id}`);
-    this.#bw.setAttribute('id', `ncom-bw-${this.#id}`);
+    this.#wrp!.setAttribute('id', `ncom-wrp-${this.#id}`);
+    this.#bw!.setAttribute('id', `ncom-bw-${this.#id}`);
   }
 
   /**
    * Build dialog content
    */
   #putContent(): void {
-    this.#bw.innerHTML = '';
+    this.#bw!.innerHTML = '';
     //head
-    this.#bw.prepend(this.#head);
+    this.#bw!.prepend(this.#head as HTMLDivElement);
     //icon
-    if (typeof this.arg.icon !== 'undefined') this.#head.prepend(this.#icon);
-    else this.#head.classList.add('ncomhead-flend');
+    if (typeof this.arg.icon !== 'undefined') this.#head!.prepend(this.#icon as HTMLDivElement);
+    else this.#head!.classList.add('ncomhead-flend');
     //closer icon
     if (this.#closerIcon())
-    this.#head.append(this.#closer);
-    this.#closer.addEventListener('click', (e: any) => {
-        e.preventDefault();
-        if (typeof this.arg.onAction === 'function')
-          this.arg.onAction.apply(this, [this.#closer]);
-        this.close();
-      });
+      this.#head!.append(this.#closer as HTMLDivElement);
+    this.#closer!.addEventListener('click', (e: Event) => {
+      e.preventDefault();
+      if (typeof this.arg.onAction === 'function')
+        this.arg.onAction.apply(this, [this.#closer]);
+      this.close();
+    });
     //box title
-    this.#bw.append(this.#title);
+    this.#bw!.append(this.#title as HTMLDivElement);
     //box content
-    this.#bw.append(this.#content);
+    this.#bw!.append(this.#content as HTMLDivElement);
     //box buttons
-    this.#bw.append(this.#buttons);
+    this.#bw!.append(this.#buttons as HTMLDivElement);
     this.#createButtons();
 
-    Object(this).$$content = this.#content;
-    Object(this).$$title = this.#title;
-    Object(this).$$buttons = this.#buttons;
-    Object(this).$$icon = this.#icon;
+    this.$$content = this.#content as HTMLDivElement;
+    this.$$title = this.#title as HTMLDivElement;
+    this.$$buttons = this.#buttons as HTMLDivElement;
+    this.$$icon = this.#icon as HTMLDivElement;
 
     this.#rgnrt();
 
-    this.#wrp.appendChild(this.#bw);
+    this.#wrp!.appendChild(this.#bw as HTMLDivElement);
 
-    this.#wrp.style.zIndex = new Date().getTime();
+    this.#wrp!.style.zIndex = `${new Date().getTime()}`;
 
     //check window innerSize
     this.domResized();
@@ -242,7 +247,7 @@ export class ncom {
     if (this.#$cd) this.#$cd.remove();
   }
 
-  #createSVG(...r: any): any {
+  #createSVG(...r:any): SVGSVGElement {
     const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
     svg.setAttribute('width', r[0][0]);
     svg.setAttribute('height', r[0][1]);
@@ -260,7 +265,7 @@ export class ncom {
   destroy(): boolean {
     try {
       this.#stopTimer();
-      this.#wrp.remove();
+      this.#wrp!.remove();
       if (typeof this.arg.onDestroy === 'function')
         this.arg.onDestroy.apply(this);
       return !0;
@@ -270,7 +275,7 @@ export class ncom {
     }
   }
 
-  close(): any {
+  close(): boolean | void {
     let res: any;
     if (this.#state === 300) {
       console.warn('ncom was closed');
@@ -281,30 +286,30 @@ export class ncom {
     if (typeof res !== 'undefined' && !res) return !0;
     this.#stopTimer();
     this.#detached = this.#wrp;
-    this.#wrp.remove();
+    this.#wrp!.remove();
     this.#state = 300;
-    this.#el('body').removeAttribute('data-ncom-is-under');
+    document.body.removeAttribute('data-ncom-is-under');
     return !0;
   }
 
-  open(): any {
+  open(): boolean | void {
     if (this.#state === 200) {
       console.warn('ncom was opened');
       return void 0;
-    } else if (this.#state === 300) this.#el('body').appendChild(this.#detached);
-    else this.#el('body').appendChild(this.#wrp);
+    } else if (this.#state === 300) document.body.appendChild(this.#detached as HTMLDivElement);
+    else document.body.appendChild(this.#wrp as HTMLDivElement);
 
     this.#state = 200;
 
     //trigger onOpen argument and #startTimer if is defined
     if (typeof this.arg.onOpen === 'function') this.arg.onOpen.apply(this);
     if (typeof this.arg.timer !== 'undefined') this.#startTimer.apply(this);
-    this.#el('body').setAttribute('data-ncom-is-under', 'RDSTATE');
+    document.body.setAttribute('data-ncom-is-under', 'RDSTATE');
 
     return !0;
   }
 
-  isOpen(): any {
+  isOpen(): boolean {
     try {
       if (this.#state === 200) return !0;
       else return !1;
@@ -315,7 +320,7 @@ export class ncom {
   }
 
   @resizeDecorator
-  domResized():void{
-    this.#wrp.style.height=`${Object(window).innerHeight}px`;
+  domResized(): void {
+    this.#wrp!.style.height = `${window.innerHeight}px`;
   }
 }
