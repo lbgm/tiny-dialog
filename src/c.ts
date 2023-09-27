@@ -1,0 +1,137 @@
+import { TinyDialog } from './index.js';
+
+type WWindow = typeof window & {
+    TinyDialog: typeof TinyDialog;
+};
+
+(window as WWindow).TinyDialog = TinyDialog;
+
+const tinydialogStyle = `
+/**!
+ * TinyDialog CSS
+ * Author: Balthazar DOSSOU {dosanel@outlook.fr}
+ *         Rodolphe SOUNLIN {rodolphe.sounlin@yahoo.fr}
+ * Licensed under MIT
+ */
+body[data-tinydialog-is-under] {
+    overflow: hidden
+}
+
+.tiny-dialog-wrp {
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, .7)
+}
+
+.tiny-dialog-wrp *,
+.tiny-dialog-wrp {
+    -user-select: none;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    -ms-user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+    outline: none
+}
+
+.tiny-dialog-bw {
+    width: 300px;
+    max-width: 90%;
+    max-height: 80%;
+    position: relative;
+    background: #dedede;
+    padding: 15px;
+    color: #444;
+    border-radius: 6px;
+    overflow-x: visible;
+    overflow-y: auto;
+    box-shadow: 0px 2px 4px 0px rgba(68, 68, 68, .3)
+}
+
+.tiny-dialog-bw>* {
+    margin: 0;
+    margin-bottom: 16px
+}
+
+.tiny-dialog-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    width: 100%
+}
+
+.tiny-dialog-head-flend {
+    justify-content: flex-end
+}
+
+.tiny-dialog-title {
+    width: 100%;
+    font-size: 18px;
+    font-weight: bold;
+    white-space: pre-line;
+    word-break: break-word
+}
+
+.tiny-dialog-content {
+    width: 100%;
+    white-space: pre-line;
+    word-break: break-word
+}
+
+.tiny-dialog-btns {
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: 0
+}
+
+.tiny-dialog-btns button {
+    margin: 5px
+}
+
+.tiny-dialog-icon {
+    display: inline-flex;
+    align-items: center;
+    width: 16px;
+    height: 16px;
+    pointer-events: none
+}
+
+.tiny-dialog-closer {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center
+}
+
+.tiny-dialog-cross {
+    fill: rgba(68, 68, 68, .5)
+}
+`;
+
+
+(() => {
+    const styleElement: HTMLStyleElement = document.createElement('style');
+    styleElement.setAttribute('type', 'text/css');
+    styleElement.setAttribute('data-tiny-dialog', 'style');
+
+    styleElement.innerHTML = tinydialogStyle;
+
+    const head = document.head || document.getElementsByTagName('head')[0];
+
+    if (head) head.appendChild(styleElement);
+
+})();

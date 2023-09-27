@@ -1,0 +1,22 @@
+{
+  "extends": "./node_modules/gts/tsconfig-google.json",
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "build",
+    "lib": [
+     "es6",
+     "dom"
+    ],
+    "target": "es6",
+    "module": "es6",
+    "experimentalDecorators": true,
+  },
+  "include": [
+    "src/**/*.ts",
+    "src/**/*",
+    "test/**/*.ts"
+  ],
+  "moduleResolution": "node",
+  "experimentalDecorators": true,
+  "emitDecoratorMetadata": true
+}
